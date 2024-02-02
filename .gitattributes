@@ -2,6 +2,17 @@ import telebot
 import webbrowser
 
 bot = telebot.TeleBot('6822090549:AAGhLf_X1eFmGWB2TSPAv1vSVRSdAGecpPs')
+from telegram import ReplyKeyboardMarkup, KeyboardButton
+
+# создаем кнопки
+button1 = KeyboardButton('Кнопка 1')
+button2 = KeyboardButton('Кнопка 2')
+
+# создаем клавиатуру
+keyboard = ReplyKeyboardMarkup([[button1, button2]], resize_keyboard=True)
+
+# отправляем сообщение с клавиатурой
+bot.send_message(chat_id=update.message.chat_id, text='Выберите действие:', reply_markup=keyboard)
 
 @bot.message_handler(commands=['start'])
 def main(message):
